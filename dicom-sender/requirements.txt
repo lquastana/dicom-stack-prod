@@ -1,2 +1,3 @@
 pydicom
 pynetdicom
+pylibjpeg-libjpeg
