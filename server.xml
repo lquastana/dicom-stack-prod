@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config>
+    <!-- Configuration de l'interface web -->
+    <web-server autostart="true" port="8080" hostname="0.0.0.0" />
+
+    <!-- Configuration du stockage et de l'indexation -->
+    <archive>
+        <!-- Dossier racine pour le stockage des fichiers DICOM -->
+        <main-directory>/opt/dicoogle/storage</main-directory>
+
+        <!-- Activation du support pour l'imagerie pathologique (WSI), requis au démarrage -->
+        <support-wsi>true</support-wsi>
+
+        <!-- Moteur d'indexation (requis par le support WSI) -->
+        <dim-providers>
+            <dim-provider>lucene</dim-provider>
+        </dim-providers>
+
+        <!-- Plugin de stockage par défaut -->
+        <default-storages>
+            <default-storage>filestorage</default-storage>
+        </default-storages>
+    </archive>
+
+    <!-- Configuration des services réseau DICOM -->
+    <dicom-services>
+        <!-- Titre AE (Application Entity Title) principal du serveur -->
+        <aetitle>DICOOGLE-STORAGE</aetitle>
+        
+        <!-- Autorisations de connexion (accepte tout le monde) -->
+        <allowed-aetitles>any</allowed-aetitles>
+        <allowed-hostnames>any</allowed-hostnames>
+
+        <!-- Service DICOM unifié (Query/Retrieve/Store) sur le port 1045 -->
+        <query-retrieve autostart="true" port="1045" hostname="0.0.0.0" />
+
+        <!-- Autre service de stockage (désactivé pour éviter les conflits) -->
+        <storage autostart="false" port="6666" />
+
+        <!-- Section requise par le serveur pour éviter un crash au démarrage -->
+        <move-destinations/>
+    </dicom-services>
+</config>

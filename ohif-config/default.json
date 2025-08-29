@@ -1,0 +1,24 @@
+{
+  "routerBasename": "/",
+  "showStudyList": true,
+  "dataSources": [
+    {
+      "friendlyName": "Serveur Dicoogle (Codespaces)",
+      "namespace": "@ohif/extension-default.dataSourcesModule.dicomweb",
+      "sourceName": "dicomweb",
+      "configuration": {
+        "name": "Dicoogle",
+        "wadoUriRoot": "https://verbose-space-spoon-6r5pwwxv4xc59x6-8080.app.github.dev/wado",
+        "qidoRoot": "https://verbose-space-spoon-6r5pwwxv4xc59x6-8080.app.github.dev/qido",
+        "wadoRoot": "https://verbose-space-spoon-6r5pwwxv4xc59x6-8080.app.github.dev/wado",
+        "qidoSupportsIncludeField": false,
+        "imageRendering": "wadors",
+        "thumbnailRendering": "wadors",
+        "enableStudyLazyLoad": true,
+        "supportsFuzzyMatching": true,
+        "dicomUploadEnabled": true
+      }
+    }
+  ],
+  "defaultDataSourceName": "dicomweb"
+}
