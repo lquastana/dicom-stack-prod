@@ -20,9 +20,10 @@ services:
     image: ohif/viewer:latest
     container_name: ohif-viewer
     ports:
-      - "${OHIF_PORT:-3001}:3000"
+      - "${OHIF_PORT:-3001}:80"
     volumes:
       - ./ohif-config/default.json:/usr/share/nginx/html/app-config.json
+      - ./nginx-config/default.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       - dicom_net
     depends_on:

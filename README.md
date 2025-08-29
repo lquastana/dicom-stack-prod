@@ -32,7 +32,7 @@ This project deploys a complete open-source DICOM ecosystem using Docker Compose
 
 ### Accès aux services
 
-- **OHIF Viewer** : [http://localhost:3001](http://localhost:3001)
+- **OHIF Viewer** : [http://localhost:3001](http://localhost:3001) (proxy interne vers Orthanc sous `/orthanc`)
 - **Orthanc Explorer** : [http://localhost:8042](http://localhost:8042)
 
 ### Utilisation
