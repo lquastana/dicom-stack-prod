@@ -5,7 +5,7 @@ This project deploys a complete open-source DICOM ecosystem using Docker Compose
 ## ✨ Components
 
 - **PACS Server**: [Orthanc](https://www.orthanc-server.com/) with DICOMweb enabled.
-- **DICOM Viewer**: [OHIF Viewer v3](https://ohif.org/) configured to query Orthanc over DICOMweb.
+- **DICOM Viewer**: [OHIF Viewer v3](https://ohif.org/) configured to query Orthanc over DICOMweb (settings in `ohif-config/app-config.js`).
 - **Simulator**: A Python service using `pynetdicom` to emulate a modality sending files.
 
 ## 🚀 Quick Start

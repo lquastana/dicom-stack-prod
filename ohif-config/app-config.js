@@ -1,0 +1,24 @@
+window.config = {
+  routerBasename: '/',
+  showStudyList: true,
+  dataSources: [
+    {
+      friendlyName: 'Orthanc DICOMweb',
+      namespace: '@ohif/extension-default.dataSourcesModule.dicomweb',
+      sourceName: 'dicomweb',
+      configuration: {
+        name: 'Orthanc',
+        wadoUriRoot: '/orthanc/wado',
+        qidoRoot: '/orthanc/dicom-web',
+        wadoRoot: '/orthanc/dicom-web',
+        qidoSupportsIncludeField: true,
+        imageRendering: 'wadors',
+        thumbnailRendering: 'wadors',
+        enableStudyLazyLoad: true,
+        supportsFuzzyMatching: true,
+        dicomUploadEnabled: true
+      }
+    }
+  ],
+  defaultDataSourceName: 'dicomweb'
+};
