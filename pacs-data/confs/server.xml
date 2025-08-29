@@ -11,7 +11,7 @@
 
     <!-- ✅ Chemin racine nécessaire pour éviter le NPE du web server -->
     <main-directory>/opt/dicoogle/data</main-directory>
-    <support-wsi>true</support-wsi>
+    <support-wsi>false</support-wsi>
     <node-name>DICOOGLE</node-name>
 
     <!-- ⚠️ Laisser vides (le schéma attend des chaînes si renseigné) -->
@@ -47,19 +47,8 @@
       <ts>1.2.840.10008.1.2.4.51</ts>
     </default-ts>
 
-    <!-- SOP explicite pour XA afin d’accepter JPEG Baseline -->
-    <sop-classes>
-      <sop-classes>
-        <uid>1.2.840.10008.5.1.4.1.1.12.1</uid>
-        <transfer-syntaxes>
-          <ts>1.2.840.10008.1.2</ts>
-          <ts>1.2.840.10008.1.2.1</ts>
-          <ts>1.2.840.10008.1.2.2</ts>
-          <ts>1.2.840.10008.1.2.4.50</ts>
-        </transfer-syntaxes>
-      </sop-classes>
-      <!-- Optionnel : dupliquer pour XRF (1.2.840.10008.5.1.4.1.1.12.2) si besoin -->
-    </sop-classes>
+    <!-- Accept all SOP Classes using the default transfer syntaxes -->
+    <sop-classes/>
 
     <additional-sop-classes/>
     <additional-transfer-syntaxes/>
