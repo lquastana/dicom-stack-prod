@@ -1,3 +1,7 @@
 pydicom
 pynetdicom
+# Needed for JPEG and RLE decompression
+pylibjpeg
 pylibjpeg-libjpeg
+numpy
+pillow
