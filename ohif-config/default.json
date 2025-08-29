@@ -3,15 +3,15 @@
   "showStudyList": true,
   "dataSources": [
     {
-      "friendlyName": "Serveur Dicoogle (Codespaces)",
+      "friendlyName": "Orthanc DICOMweb",
       "namespace": "@ohif/extension-default.dataSourcesModule.dicomweb",
       "sourceName": "dicomweb",
       "configuration": {
-        "name": "Dicoogle",
-        "wadoUriRoot": "https://verbose-space-spoon-6r5pwwxv4xc59x6-8080.app.github.dev/wado",
-        "qidoRoot": "https://verbose-space-spoon-6r5pwwxv4xc59x6-8080.app.github.dev/qido",
-        "wadoRoot": "https://verbose-space-spoon-6r5pwwxv4xc59x6-8080.app.github.dev/wado",
-        "qidoSupportsIncludeField": false,
+        "name": "Orthanc",
+        "wadoUriRoot": "http://localhost:8042/wado",
+        "qidoRoot": "http://localhost:8042/dicom-web",
+        "wadoRoot": "http://localhost:8042/dicom-web",
+        "qidoSupportsIncludeField": true,
         "imageRendering": "wadors",
         "thumbnailRendering": "wadors",
         "enableStudyLazyLoad": true,

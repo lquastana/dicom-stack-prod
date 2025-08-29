@@ -1,70 +1,50 @@
 services:
-  # --- Service 1: Dicoogle PACS Server ---
-  dicoogle:
-    build: https://github.com/dicoogle/dicoogle.git
-    container_name: dicoogle-pacs
+  orthanc:
+    image: orthancteam/orthanc:24.6.0
+    container_name: orthanc
     ports:
-      - "${DICOOGLE_WEB_PORT:-8080}:8080"
-      - "${DICOOGLE_DICOM_PORT:-1045}:1045"
+      - "${ORTHANC_HTTP_PORT:-8042}:8042"
+      - "${ORTHANC_DICOM_PORT:-4242}:4242"
     volumes:
-      # On mappe notre dossier de données local, qui contient la configuration.
-      - ./pacs-data:/opt/dicoogle/data
+      - ./pacs-data/orthanc-db:/var/lib/orthanc/db
+    environment:
+      ORTHANC__NAME: Orthanc
+      ORTHANC__REMOTEACCESSAllowed: "true"
+      ORTHANC__DICOMWEB__ENABLE: "true"
+      ORTHANC__DICOMWEB__ROOT: "/dicom-web"
     networks:
       - dicom_net
     restart: unless-stopped
-    # On remplace le point d'entrée par défaut pour organiser les fichiers et lancer l'application
-    entrypoint: >
-      sh -c "
-        echo '--- Démarrage personnalisé de Dicoogle ---';
-        
-        echo 'Organisation des fichiers de l''application vers /opt/dicoogle...';
-        mkdir -p /opt/dicoogle;
-        mkdir -p /opt/dicoogle/confs;
-        # On déplace les fichiers de l'application s'ils existent dans /root
-        # L'option -n évite les erreurs si les fichiers ont déjà été déplacés
-        mv -n /root/dicoogle.jar /root/Plugins /opt/dicoogle/ 2>/dev/null || true;
 
-        if [ ! -f /opt/dicoogle/data/confs/server.xml ]; then
-          echo 'AVERTISSEMENT: Le fichier server.xml personnalisé est introuvable.';
-        else
-          echo 'SUCCÈS: Le fichier server.xml personnalisé a été trouvé et sera utilisé.';
-          cp /opt/dicoogle/data/confs/server.xml /opt/dicoogle/confs/server.xml
-        fi;
-
-        echo 'Lancement de l''application Dicoogle depuis /opt/dicoogle...';
-        cd /opt/dicoogle && exec java -jar dicoogle.jar
-      "
-
-  # --- Service 2: OHIF DICOM Viewer ---
   ohif:
     image: ohif/viewer:latest
     container_name: ohif-viewer
     ports:
-      - "${OHIF_PORT:-3001}:3000" 
+      - "${OHIF_PORT:-3001}:3000"
     volumes:
       - ./ohif-config/default.json:/usr/share/nginx/html/app-config.json
     networks:
       - dicom_net
     depends_on:
-      - dicoogle
+      - orthanc
     restart: unless-stopped
 
-  # --- Service 3: Simulateur d'envoi de DICOM ---
   dicom-sender:
     build: ./dicom-sender
     container_name: dicom-sender
     environment:
-      - PACS_HOSTNAME=${PACS_HOSTNAME:-dicoogle}
-      - PACS_AETITLE=${DICOOGLE_AETITLE}
-      - PACS_PORT=${DICOOGLE_DICOM_PORT}
+      - PACS_HOSTNAME=${PACS_HOSTNAME:-orthanc}
+      - PACS_AETITLE=${PACS_AETITLE:-ORTHANC}
+      - PACS_PORT=${PACS_PORT:-4242}
       - SENDER_AETITLE=${SENDER_AETITLE:-CT_SCANNER}
     volumes:
       - ./dicom-sender/sample-dicoms:/dicoms
     networks:
       - dicom_net
     depends_on:
-      - dicoogle
+      - orthanc
     command: sh -c "echo 'Attente de 25s pour le démarrage stable du PACS...' && sleep 25 && python send_dicoms.py"
+    restart: unless-stopped
 
 networks:
   dicom_net:

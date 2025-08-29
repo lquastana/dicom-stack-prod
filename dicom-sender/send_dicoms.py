@@ -1,21 +1,44 @@
 import os
-import time
 from pydicom import dcmread
+from pydicom.uid import (
+    ExplicitVRLittleEndian,
+    ImplicitVRLittleEndian,
+    RLELossless,
+    JPEGBaseline8Bit,
+    JPEGBaseline14Bit,
+    JPEGExtended12Bit,
+    JPEG2000Lossless,
+    JPEG2000,
+)
 from pynetdicom import AE, evt
 from pynetdicom.sop_class import (
     CTImageStorage,
     MRImageStorage,
     SecondaryCaptureImageStorage,
     UltrasoundImageStorage,
-    XRayAngiographicImageStorage
+    UltrasoundMultiframeImageStorage,
+    XRayAngiographicImageStorage,
+    XRayRadiofluoroscopicImageStorage,
 )
 
 # --- Configuration lue depuis les variables d'environnement ---
-PACS_HOSTNAME = os.getenv('PACS_HOSTNAME', 'localhost')
-PACS_PORT = int(os.getenv('PACS_PORT', 11112))
-PACS_AETITLE = os.getenv('PACS_AETITLE', 'DICOOGLE')
-SENDER_AETITLE = os.getenv('SENDER_AETITLE', 'CT_SCANNER')
-DICOM_DIR = '/dicoms'
+PACS_HOSTNAME = os.getenv("PACS_HOSTNAME", "orthanc")
+PACS_PORT = int(os.getenv("PACS_PORT", 4242))
+PACS_AETITLE = os.getenv("PACS_AETITLE", "ORTHANC")
+SENDER_AETITLE = os.getenv("SENDER_AETITLE", "CT_SCANNER")
+DICOM_DIR = "/dicoms"
+
+TRANSFER_SYNTAXES = [
+    ExplicitVRLittleEndian,
+    ImplicitVRLittleEndian,
+    RLELossless,
+    JPEGBaseline8Bit,
+    JPEGBaseline14Bit,
+    JPEGExtended12Bit,
+    JPEG2000Lossless,
+    JPEG2000,
+]
+
 
 def handle_store_response(event):
     """Gère la réponse C-STORE du PACS."""
@@ -23,35 +46,41 @@ def handle_store_response(event):
     if status == 0x0000:
         print(f"  -> C-STORE success for {event.request.AffectedSOPInstanceUID}")
     else:
-        print(f"  -> C-STORE failed with status {status:04x} for {event.request.AffectedSOPInstanceUID}")
+        print(
+            f"  -> C-STORE failed with status {status:04x} for {event.request.AffectedSOPInstanceUID}"
+        )
+
 
 def send_dicom_files(pacs_host, pacs_port, pacs_aetitle, sender_aetitle, directory):
     """Scanne un répertoire et envoie tous les fichiers .dcm au PACS."""
-    
-    # LIGNE DE VÉRIFICATION
-    print("--- V2 DU SCRIPT EN COURS D'EXECUTION ---")
-    
+
     print("--- Démarrage du simulateur d'envoi DICOM ---")
-    print(f"Configuration:")
+    print("Configuration:")
     print(f"  - PACS Host: {pacs_host}")
     print(f"  - PACS Port: {pacs_port}")
     print(f"  - PACS AE Title: {pacs_aetitle}")
     print(f"  - Notre AE Title: {sender_aetitle}")
     print(f"  - Répertoire des fichiers: {directory}")
     print("-------------------------------------------------")
-    
+
     ae = AE(ae_title=sender_aetitle)
-    
-    ae.add_requested_context(CTImageStorage)
-    ae.add_requested_context(MRImageStorage)
-    ae.add_requested_context(SecondaryCaptureImageStorage)
-    ae.add_requested_context(UltrasoundImageStorage)
-    ae.add_requested_context(XRayAngiographicImageStorage)
+
+    sop_classes = [
+        CTImageStorage,
+        MRImageStorage,
+        SecondaryCaptureImageStorage,
+        UltrasoundImageStorage,
+        UltrasoundMultiframeImageStorage,
+        XRayAngiographicImageStorage,
+        XRayRadiofluoroscopicImageStorage,
+    ]
+    for sc in sop_classes:
+        ae.add_requested_context(sc, TRANSFER_SYNTAXES)
 
     handlers = [(evt.EVT_C_STORE, handle_store_response)]
 
     print(f"Tentative d'association avec le PACS {pacs_aetitle}@{pacs_host}:{pacs_port}")
-    
+
     assoc = ae.associate(pacs_host, pacs_port, ae_title=pacs_aetitle, evt_handlers=handlers)
 
     if not assoc.is_established:
@@ -60,21 +89,21 @@ def send_dicom_files(pacs_host, pacs_port, pacs_aetitle, sender_aetitle, directo
 
     print("Association avec le PACS réussie.")
     file_count = 0
-    
+
     try:
         for root, _, files in os.walk(directory):
             for filename in files:
                 filepath = os.path.join(root, filename)
                 try:
                     dataset = dcmread(filepath)
-                    
+
                     print(f"\nEnvoi du fichier: {filename} (SOP UID: {dataset.SOPInstanceUID})")
-                    
+
                     response = assoc.send_c_store(dataset)
 
                     if response is None or response.Status != 0x0000:
-                         print(f"Échec de l'envoi pour {filename}")
-                    
+                        print(f"Échec de l'envoi pour {filename}")
+
                     file_count += 1
 
                 except Exception as e:
