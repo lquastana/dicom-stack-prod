@@ -1,6 +1,6 @@
 services:
   orthanc:
-    image: orthancteam/orthanc:24.6.0
+    image: orthancteam/orthanc:25.8.2
     container_name: orthanc
     ports:
       - "${ORTHANC_HTTP_PORT:-8042}:8042"
