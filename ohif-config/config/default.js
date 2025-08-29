@@ -1,12 +1,9 @@
 window.config = {
   routerBasename: '/',
   showStudyList: true,
-  dataSources: [
-    {
-      friendlyName: 'Orthanc DICOMweb',
-      namespace: '@ohif/extension-default.dataSourcesModule.dicomweb',
-      sourceName: 'dicomweb',
-      configuration: {
+  servers: {
+    dicomWeb: [
+      {
         name: 'Orthanc',
         wadoUriRoot: '/orthanc/wado',
         qidoRoot: '/orthanc/dicom-web',
@@ -18,7 +15,6 @@ window.config = {
         supportsFuzzyMatching: true,
         dicomUploadEnabled: true
       }
-    }
-  ],
-  defaultDataSourceName: 'dicomweb'
+    ]
+  }
 };
