@@ -17,7 +17,7 @@ from pynetdicom.sop_class import (
     MRImageStorage,
     SecondaryCaptureImageStorage,
     UltrasoundImageStorage,
-    UltrasoundMultiframeImageStorage,
+    UltrasoundMultiFrameImageStorage,
     XRayAngiographicImageStorage,
     XRayRadiofluoroscopicImageStorage,
 )
@@ -72,7 +72,7 @@ def send_dicom_files(pacs_host, pacs_port, pacs_aetitle, sender_aetitle, directo
         MRImageStorage,
         SecondaryCaptureImageStorage,
         UltrasoundImageStorage,
-        UltrasoundMultiframeImageStorage,
+        UltrasoundMultiFrameImageStorage,
         XRayAngiographicImageStorage,
         XRayRadiofluoroscopicImageStorage,
     ]
