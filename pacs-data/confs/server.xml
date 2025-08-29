@@ -15,7 +15,9 @@
     <node-name>DICOOGLE</node-name>
 
     <!-- ⚠️ Laisser vides (le schéma attend des chaînes si renseigné) -->
-    <dim-providers/>
+    <dim-providers>
+      <dim-provider>lucene</dim-provider>
+    </dim-providers>
     <default-storages/>
 
     <enable-watch-directory>false</enable-watch-directory>
@@ -46,6 +48,18 @@
       <ts>1.2.840.10008.1.2.4.100</ts>
       <ts>1.2.840.10008.1.2.4.51</ts>
     </default-ts>
+
+    <sop-classes>
+      <sop-class>
+        <uid>1.2.840.10008.5.1.4.1.1.12.1</uid>
+      </sop-class>
+      <sop-class>
+        <uid>1.2.840.10008.5.1.4.1.1.12.2</uid>
+      </sop-class>
+      <sop-class>
+        <uid>1.2.840.10008.5.1.4.1.1.3.1</uid>
+      </sop-class>
+    </sop-classes>
 
     <additional-sop-classes/>
     <additional-transfer-syntaxes/>
