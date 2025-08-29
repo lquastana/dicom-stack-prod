@@ -9,9 +9,9 @@ services:
       - ./pacs-data/orthanc-db:/var/lib/orthanc/db
     environment:
       ORTHANC__NAME: Orthanc
-      ORTHANC__REMOTEACCESSAllowed: "true"
-      ORTHANC__DICOMWEB__ENABLE: "true"
-      ORTHANC__DICOMWEB__ROOT: "/dicom-web"
+      ORTHANC__REMOTE_ACCESS_ALLOWED: "true"
+      ORTHANC__DICOM_WEB__ENABLE: "true"
+      ORTHANC__DICOM_WEB__ROOT: "/dicom-web"
     networks:
       - dicom_net
     restart: unless-stopped
