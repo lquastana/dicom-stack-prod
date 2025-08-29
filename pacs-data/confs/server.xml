@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
   <web-server autostart="true" port="8080">
-    <!-- Doit être une chaîne -->
     <allowed-origins>*</allowed-origins>
   </web-server>
 
@@ -9,12 +9,10 @@
     <thumbnail-size>64</thumbnail-size>
     <indexer-effort>100</indexer-effort>
 
-    <!-- ✅ Chemin racine nécessaire pour éviter le NPE du web server -->
     <main-directory>/opt/dicoogle/data</main-directory>
     <support-wsi>false</support-wsi>
     <node-name>DICOOGLE</node-name>
 
-    <!-- ⚠️ Laisser vides (le schéma attend des chaînes si renseigné) -->
     <dim-providers>
       <dim-provider>lucene</dim-provider>
     </dim-providers>
