@@ -64,7 +64,7 @@ services:
       - dicom_net
     depends_on:
       - dicoogle
-    command: sh -c "echo 'Attente de 45s pour le démarrage du PACS...' && sleep 15 && python send_dicoms.py"
+    command: sh -c "echo 'Attente de 25s pour le démarrage stable du PACS...' && sleep 25 && python send_dicoms.py"
 
 networks:
   dicom_net:
