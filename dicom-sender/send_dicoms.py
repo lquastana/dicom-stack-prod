@@ -5,8 +5,9 @@ from pydicom.uid import (
     ImplicitVRLittleEndian,
     RLELossless,
     JPEGBaseline8Bit,
-    JPEGBaseline14Bit,
     JPEGExtended12Bit,
+    JPEGLossless,
+    JPEGLosslessSV1,
     JPEG2000Lossless,
     JPEG2000,
 )
@@ -33,8 +34,9 @@ TRANSFER_SYNTAXES = [
     ImplicitVRLittleEndian,
     RLELossless,
     JPEGBaseline8Bit,
-    JPEGBaseline14Bit,
     JPEGExtended12Bit,
+    JPEGLossless,
+    JPEGLosslessSV1,
     JPEG2000Lossless,
     JPEG2000,
 ]
