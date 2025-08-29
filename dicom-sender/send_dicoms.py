@@ -3,13 +3,6 @@ from pydicom import dcmread
 from pydicom.uid import (
     ExplicitVRLittleEndian,
     ImplicitVRLittleEndian,
-    RLELossless,
-    JPEGBaseline8Bit,
-    JPEGExtended12Bit,
-    JPEGLossless,
-    JPEGLosslessSV1,
-    JPEG2000Lossless,
-    JPEG2000,
 )
 from pynetdicom import AE, evt
 from pynetdicom.sop_class import (
@@ -29,16 +22,14 @@ PACS_AETITLE = os.getenv("PACS_AETITLE", "ORTHANC")
 SENDER_AETITLE = os.getenv("SENDER_AETITLE", "CT_SCANNER")
 DICOM_DIR = "/dicoms"
 
+# Orthanc ne prend en charge que les syntaxes de transfert non compressées.
+# Les fichiers compressés sont donc décompressés avant l'envoi, puis
+# transmis en Explicit VR Little Endian. Pour éviter tout refus de contexte
+# de présentation, seuls les transferts non compressés sont proposés lors
+# de la négociation d'association.
 TRANSFER_SYNTAXES = [
     ExplicitVRLittleEndian,
     ImplicitVRLittleEndian,
-    RLELossless,
-    JPEGBaseline8Bit,
-    JPEGExtended12Bit,
-    JPEGLossless,
-    JPEGLosslessSV1,
-    JPEG2000Lossless,
-    JPEG2000,
 ]
 
 
