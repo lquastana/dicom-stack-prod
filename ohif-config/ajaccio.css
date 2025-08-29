@@ -1,22 +1,23 @@
 :root {
-  --primary-color: #14457b;
-  --active-color: #14457b;
-  --primary-text-color: #14457b;
-  --menu-color: #14457b;
-  --layout-color-primary: #14457b;
-  --active-color-light: #5eb0ef;
+  /* Ajaccio blue in HSL for OHIF Tailwind variables */
+  --primary: 211 72% 28%;
+  --primary-foreground: 0 0% 100%;
 }
 
-/* Override buttons and links */
-.btn-primary, .bg-primary, .text-primary {
+/* Fallback overrides for legacy selectors */
+.btn-primary,
+.bg-primary,
+.text-primary {
   background-color: #14457b !important;
   color: #ffffff !important;
 }
 
-.btn-primary:hover, .bg-primary:hover {
+.btn-primary:hover,
+.bg-primary:hover {
   background-color: #0f355d !important;
 }
 
-a, a:hover {
+a,
+a:hover {
   color: #14457b !important;
 }
