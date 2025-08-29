@@ -18,7 +18,9 @@
     <dim-providers>
       <dim-provider>lucene</dim-provider>
     </dim-providers>
-    <default-storages/>
+    <default-storages>
+      <default-storage>filestorage</default-storage>
+    </default-storages>
 
     <enable-watch-directory>false</enable-watch-directory>
     <watch-directory></watch-directory>
@@ -33,48 +35,28 @@
     <allowed-local-interfaces>any</allowed-local-interfaces>
     <allowed-hostnames>any</allowed-hostnames>
 
+    <default-ts>
+      <ts>1.2.840.10008.1.2</ts>
+      <ts>1.2.840.10008.1.2.1</ts>
+      <ts>1.2.840.10008.1.2.4.50</ts>
+      <ts>1.2.840.10008.1.2.4.70</ts>
+      <ts>1.2.840.10008.1.2.4.80</ts>
+      <ts>1.2.840.10008.1.2.4.57</ts>
+      <ts>1.2.840.10008.1.2.4.90</ts>
+      <ts>1.2.840.10008.1.2.4.91</ts>
+      <ts>1.2.840.10008.1.2.5</ts>
+      <ts>1.2.840.10008.1.2.4.100</ts>
+      <ts>1.2.840.10008.1.2.4.51</ts>
+    </default-ts>
     <sop-classes>
       <sop-class>
         <uid>1.2.840.10008.5.1.4.1.1.12.1</uid>
-        <transfer-syntaxes>1.2.840.10008.1.2</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.1</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.50</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.70</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.80</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.57</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.90</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.91</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.5</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.100</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.51</transfer-syntaxes>
       </sop-class>
       <sop-class>
         <uid>1.2.840.10008.5.1.4.1.1.12.2</uid>
-        <transfer-syntaxes>1.2.840.10008.1.2</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.1</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.50</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.70</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.80</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.57</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.90</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.91</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.5</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.100</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.51</transfer-syntaxes>
       </sop-class>
       <sop-class>
         <uid>1.2.840.10008.5.1.4.1.1.3.1</uid>
-        <transfer-syntaxes>1.2.840.10008.1.2</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.1</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.50</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.70</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.80</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.57</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.90</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.91</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.5</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.100</transfer-syntaxes>
-        <transfer-syntaxes>1.2.840.10008.1.2.4.51</transfer-syntaxes>
       </sop-class>
     </sop-classes>
 
