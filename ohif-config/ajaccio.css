@@ -1,23 +1,14 @@
 :root {
-  /* Ajaccio blue in HSL for OHIF Tailwind variables */
-  --primary: 211 72% 28%;
+  --colors-primary-50: 211 72% 95%;
+  --colors-primary-100: 211 72% 90%;
+  --colors-primary-200: 211 72% 80%;
+  --colors-primary-300: 211 72% 70%;
+  --colors-primary-400: 211 72% 60%;
+  --colors-primary-500: 211 72% 50%;
+  --colors-primary-600: 211 72% 40%;
+  --colors-primary-700: 211 72% 30%;
+  --colors-primary-800: 211 72% 25%;
+  --colors-primary-900: 211 72% 20%;
+  --colors-primary-950: 211 72% 15%;
   --primary-foreground: 0 0% 100%;
-}
-
-/* Fallback overrides for legacy selectors */
-.btn-primary,
-.bg-primary,
-.text-primary {
-  background-color: #14457b !important;
-  color: #ffffff !important;
-}
-
-.btn-primary:hover,
-.bg-primary:hover {
-  background-color: #0f355d !important;
-}
-
-a,
-a:hover {
-  color: #14457b !important;
 }

@@ -34,6 +34,11 @@ This project deploys a complete open-source DICOM ecosystem using Docker Compose
 
 - **OHIF Viewer** : [http://localhost:3001](http://localhost:3001) (proxy interne vers Orthanc sous `/orthanc`)
 - **Orthanc Explorer** : [http://localhost:8042](http://localhost:8042)
+### Personnaliser le thème
+
+Le viewer OHIF charge le fichier `ohif-config/ajaccio.css` qui définit les variables Tailwind `--colors-primary-*` pour appliquer les couleurs du CH Ajaccio.
+Modifiez ces variables pour adapter la palette comme décrit dans la documentation de [theming](https://docs.ohif.org/platform/themeing/#tailwind-css).
+
 
 ### Utilisation
 
