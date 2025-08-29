@@ -1,6 +1,7 @@
 window.config = {
   routerBasename: '/',
   showStudyList: true,
+  customStyleSheetUrl: '/ajaccio.css',
   servers: {
     dicomWeb: [
       {

@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #14457b;
+  --active-color: #14457b;
+  --primary-text-color: #14457b;
+  --menu-color: #14457b;
+  --layout-color-primary: #14457b;
+  --active-color-light: #5eb0ef;
+}
+
+/* Override buttons and links */
+.btn-primary, .bg-primary, .text-primary {
+  background-color: #14457b !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover, .bg-primary:hover {
+  background-color: #0f355d !important;
+}
+
+a, a:hover {
+  color: #14457b !important;
+}
