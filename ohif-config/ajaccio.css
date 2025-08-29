@@ -1,0 +1,14 @@
+:root {
+  --colors-primary-50: 211 72% 95%;
+  --colors-primary-100: 211 72% 90%;
+  --colors-primary-200: 211 72% 80%;
+  --colors-primary-300: 211 72% 70%;
+  --colors-primary-400: 211 72% 60%;
+  --colors-primary-500: 211 72% 50%;
+  --colors-primary-600: 211 72% 40%;
+  --colors-primary-700: 211 72% 30%;
+  --colors-primary-800: 211 72% 25%;
+  --colors-primary-900: 211 72% 20%;
+  --colors-primary-950: 211 72% 15%;
+  --primary-foreground: 0 0% 100%;
+}
