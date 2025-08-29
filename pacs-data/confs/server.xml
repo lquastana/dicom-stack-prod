@@ -47,9 +47,6 @@
       <ts>1.2.840.10008.1.2.4.51</ts>
     </default-ts>
 
-    <!-- Accept all SOP Classes using the default transfer syntaxes -->
-    <sop-classes/>
-
     <additional-sop-classes/>
     <additional-transfer-syntaxes/>
     <move-destinations/>
